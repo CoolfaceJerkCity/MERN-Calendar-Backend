@@ -76,7 +76,7 @@ const revalidarToken = async(req, res = response) => {
     //Generar JWT
     const token = await generarJWT(uid, name);
 
-    res.json({
+    res.status(200).json({
         ok: true,
         msg: 'Token renovado',
         token, uid, name
