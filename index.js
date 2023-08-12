@@ -30,6 +30,10 @@ app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/events', eventRouter);
 
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+})
+
 //Escuchar puerto
 app.listen(process.env.PORT, ()=>{
     console.log(`Servidor corriendo en puerto ${process.env.PORT}`);

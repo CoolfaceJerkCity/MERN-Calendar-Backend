@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
- const UsuarioSchema = Schema({
+const UsuarioSchema = Schema({
     name: {
         type: String,
         require: true
@@ -15,5 +15,11 @@ import { Schema, model } from "mongoose";
         require: true
     }
 });
+
+UsuarioSchema.method('toJSON', function() {
+    const { ...object } = this.toObject();
+    object.uid = _id;
+    return object;
+})
 
 export const Usuario = model('Usuario', UsuarioSchema);
